@@ -13,7 +13,6 @@ class Que {
 
   drawQue() {
     for (var i = 0; i < this.que.length; i++) {
-     
       text(this.que[i].name, width - 100, height - adjHeight + 20 + i * 40)
     }
     

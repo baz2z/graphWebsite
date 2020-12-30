@@ -56,7 +56,7 @@ class Bfs {
 
   step() {
     if (this.q.length != 0) {
-      let v = this.getLast(q);
+      let v = this.getLast(this.q);
       let n = this.getIndex(v);
 
       if (this.p[n] != this.getLengthList(v)) {
@@ -70,7 +70,6 @@ class Bfs {
         }
       } else {
         this.q.pop();
-        print("popo")
       }
     }
   }

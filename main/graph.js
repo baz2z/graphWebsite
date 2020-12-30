@@ -15,7 +15,7 @@ class Graph {
       }
     }
   }
-  
+
 
   addVertex(v) {
     // initialize the adjacent list with a
@@ -43,36 +43,53 @@ class Graph {
 
   draw() {
     for (var [v1, list1] of this.adjList) {
-      if (v1.state == "") {
-        ellipse(v1.x, v1.y, vertexWidth);
-      }
-      if (v1.state == "marked") {
-        stroke("green")
-        strokeWeight(3)
-        ellipse(v1.x, v1.y, vertexWidth);
-        stroke("rgb(30,30,30)")
-        strokeWeight(1)
-      }
-
-      textSize(17)
-      text(v1.name, v1.x - (vertexWidth / 4), v1.y)
-
-      for (var v2 of list1) {
-        line(v1.x, v1.y, v2.x, v2.y);
-      }
+      //draw Vertices
+      v1.draw();
+      //draw edges
+      v1.drawEdges(list1)
     }
   }
 
-
   isOver(mouseX, mouseY) {
     for (var vertex of this.adjList.keys()) {
-      if (vertex.x - vertexWidth / 2 < mouseX && vertex.x + vertexWidth / 2 > mouseX &&
-        vertex.y - vertexWidth / 2 < mouseY && vertex.y + vertexWidth / 2 > mouseY) {
+      if (dist(vertex.x, vertex.y, mouseX, mouseY) < vertexWidth/2) {
         return vertex;
       }
     }
     return false;
   }
+
+  isInside(mouseX, mouseY) {
+    if (mouseX > 0 && mouseX < width - settingsWidth &&
+      mouseY > 0 && mouseY < height - adjHeight) {
+      return true
+    }
+  }
+
+  //checks weather mouse is over vertex --> add Edge to vertexMemory
+  // else just add a Vertex to the graph
+  addOrConnect() {
+    if (this.isOver(mouseX, mouseY) instanceof Vertex) {
+      if (this.isInside(mouseX, mouseY)) {
+        let v = (this.isOver(mouseX, mouseY));
+        vertexMemory[counter % 2] = v;
+        counter++;
+        if (counter % 2 == 0) {
+          this.addEdge(vertexMemory[0], vertexMemory[1]);
+        }
+      }
+    } else if (this.isInside(mouseX, mouseY)) {
+      let v = new Vertex(mouseX, mouseY, names[z]);
+      z++;
+      this.addVertex(v);
+    }
+  }
+
+
+
+
+
+
 
   iterateOver() {
     let a = Array.from(this.adjList);

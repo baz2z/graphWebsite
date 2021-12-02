@@ -21,7 +21,6 @@ class Setting {
     sel.position(width - this.setWidth / 2 - 40, 30);
     sel.option('BFS');
     sel.option('DFS');
-    sel.option('DIJKSTRA');
     sel.changed(this.mySelectEvent);
     
     re = createButton("realign Vertices")

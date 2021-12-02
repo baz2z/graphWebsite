@@ -7,4 +7,5 @@ On the left you will see an adjacency list with pointers, at the bottom a bolean
 Nodes can be connected by clicking on each in turn. 
 
 PseudoCode:
-![Alt text](BFS pseudocode.png.jpg?raw=true "Title")
+
+<img width="383" alt="BFS pseudocode" src="BFS pseudocode.png">

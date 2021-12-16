@@ -60,7 +60,7 @@ class Setting {
     let q = [];
 
     //unser startknoten
-    q.push(g.getVertex("Max"));
+    q.push(g.getVertex("Luke"));
     let boolean = new Array(g.adjList.size)
     let zeiger = new Array(g.adjList.size)
     b.set(g, q, boolean, zeiger);
@@ -79,7 +79,7 @@ class Setting {
     let stack = [];
 
     //unser startknoten
-    stack.push(g.getVertex("Max"));
+    stack.push(g.getVertex("Luke"));
     let boolean = new Array(g.adjList.size)
     let zeiger = new Array(g.adjList.size)
     d.set(g, stack, boolean, zeiger);
